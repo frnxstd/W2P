@@ -210,6 +210,7 @@ function onSuccess(position)
 }
 
 function onError(error) {
+    alert('Error!');
     //myApp.popup('.popup-alert');
 }
 
@@ -218,6 +219,7 @@ $(document).ready(function() {
     $('.nav').slideAndSwipe();
     $('div.page').css('height', '100%').css('height', '-=65px');
 });
+
 // page transitions
 $("a.page-open").click(function(){
     $("div.page").addClass("page-transform");
@@ -225,17 +227,14 @@ $("a.page-open").click(function(){
 $("a.page-close").click(function(){
     $("div.page").removeClass("page-transform");
 });
-$("a.settings").click(function(){
-    $("div.settings").addClass("display-block");
-    $("div.discover, div.about").removeClass("display-block");
-});
-$("a.discover").click(function(){
-    $("div.discover").addClass("display-block");
-    $("div.settings, div.about").removeClass("display-block");
-});
-$("a.about").click(function(){
-    $("div.about").addClass("display-block");
-    $("div.settings, div.discover").removeClass("display-block");
-});
 
+/**
+ *
+ * MENU ITEMS CALLS PAGES
+ *
+ */
 
+$("a[data-menu-link='true']").click(function(){
+    $("div.pages").removeClass("display-block");
+    $("."+$(this).data("target")).addClass("display-block");
+});
