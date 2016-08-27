@@ -4,7 +4,15 @@ var map;
 var iconme;
 var my_marker;
 var directionsService = new google.maps.DirectionsService;
-var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true,suppressInfoWindows:false,polylineOptions:{strokeColor:"#000000",strokeWeight:"5"}});
+var directionsDisplay = new google.maps.DirectionsRenderer({
+    suppressMarkers: true,
+    suppressInfoWindows: false,
+    polylineOptions: {
+        strokeColor: "#000000",
+        strokeOpacity: 0.4,
+        strokeWeight: 2
+    }
+});
 
 function relocate(lat,lon)
 {
@@ -20,7 +28,7 @@ function initialize(lat,lon,range)
 
     $("#cancel").removeClass("hide");
     $("#config").addClass("hide");
-    $("#map").css("height",$( document ).height() - ($(".navbar").height() * 2) - 20);
+    $("#map").css("height",$( document ).height() - ($(".navbar").height() * 2) - 65);
 
     var locations;
     var icon;
@@ -37,46 +45,33 @@ function initialize(lat,lon,range)
         };
 
         var map_style =
-            [
-                {
-                    "elementType": "geometry",
-                    "stylers": [{"hue": "#ff4400"}, {"saturation": -68}, {"lightness": -4}, {"gamma": 0.72}]
-                },
-                {
-                    "featureType": "road", "elementType": "labels.icon"}, {
-                    "featureType": "landscape.man_made",
-                    "elementType": "geometry",
-                    "stylers": [{"hue": "#0077ff"}, {"gamma": 3.1}]
-                },
-                {
-                    "featureType": "water",
-                    "stylers": [{"hue": "#00ccff"}, {"gamma": 0.44}, {"saturation": -33}]
-                },
-                {
-                    "featureType": "poi.park",
-                    "stylers": [{"hue": "#44ff00"}, {"saturation": -23}]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "labels.text.fill",
-                    "stylers": [{"hue": "#007fff"}, {"gamma": 0.77}, {"saturation": 65}, {"lightness": 99}]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [{"gamma": 0.11}, {"weight": 5.6}, {"saturation": 99}, {"hue": "#0091ff"}, {"lightness": -86}]
-                },
-                {
-                    "featureType": "transit.line",
-                    "elementType": "geometry",
-                    "stylers": [{"lightness": -48}, {"hue": "#ff5e00"}, {"gamma": 1.2}, {"saturation": -23}]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [{"saturation": -64}, {"hue": "#ff9100"}, {"lightness": 16}, {"gamma": 0.47}, {"weight": 2.7}]
-                }
-            ];
+            [{
+                "featureType": "all",
+                "elementType": "all",
+                "stylers": [{"saturation": -80}]
+            }, {
+                "featureType": "administrative.country",
+                "elementType": "geometry.fill",
+                "stylers": [{"visibility": "on"}, {"hue": "#ff0000"}]
+            }, {
+                "featureType": "administrative.locality",
+                "elementType": "geometry.stroke",
+                "stylers": [{"visibility": "on"}]
+            }, {
+                "featureType": "administrative.locality",
+                "elementType": "labels.text.fill",
+                "stylers": [{"hue": "#25ff00"}]
+            }, {
+                "featureType": "landscape",
+                "elementType": "labels",
+                "stylers": [{"visibility": "off"}]
+            }, {
+                "featureType": "road.arterial",
+                "elementType": "geometry",
+                "stylers": [{"hue": "#00ffee"}, {"saturation": 50}]
+            }];
+
+
 
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 18,
@@ -210,14 +205,15 @@ function onSuccess(position)
 }
 
 function onError(error) {
+    alert('Error!');
     //myApp.popup('.popup-alert');
 }
 
 // slideandswipe menu
 $(document).ready(function() {
     $('.nav').slideAndSwipe();
-    $('div.page').css('height', '100%').css('height', '-=65px');
 });
+
 // page transitions
 $("a.page-open").click(function(){
     $("div.page").addClass("page-transform");
@@ -225,17 +221,14 @@ $("a.page-open").click(function(){
 $("a.page-close").click(function(){
     $("div.page").removeClass("page-transform");
 });
-$("a.settings").click(function(){
-    $("div.settings").addClass("display-block");
-    $("div.discover, div.about").removeClass("display-block");
-});
-$("a.discover").click(function(){
-    $("div.discover").addClass("display-block");
-    $("div.settings, div.about").removeClass("display-block");
-});
-$("a.about").click(function(){
-    $("div.about").addClass("display-block");
-    $("div.settings, div.discover").removeClass("display-block");
-});
 
+/**
+ *
+ * MENU ITEMS CALLS PAGES
+ *
+ */
 
+$("a[data-menu-link='true']").click(function(){
+    $("div.pages").removeClass("display-block");
+    $("."+$(this).data("target")).addClass("display-block");
+});
