@@ -1,195 +1,36 @@
-body {
-    margin:0 auto;
-    height: 100%;
-    font-family: 'Open Sans', sans-serif;
-    transition:all 0.3s ease;
-}
-h1, h2, h3, h4, h5, h6, p {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 100;
-}
-/* font&bg color */
-.font-color-w2p {
-    color: #F7AF0F;
-}
-.bg-color-w2p {
-    background-color: #F7AF0F;
-}
-.font-color-white {
-    color: #ffffff;
-}
-.bg-color-white {
-    background-color: #ffffff;
-}
-/* font & bg color */
-/* shadow */
-.shadow-bottom {
-    -webkit-box-shadow: 0 1px 20px 0 rgba(0,0,0,0.4);
-    -moz-box-shadow: 0 1px 20px 0 rgba(0,0,0,0.4);
-    box-shadow: 0 1px 20px 0 rgba(0,0,0,0.4);
-}
-/* shadow */
-/* object size */
-.width-100 {
-    width: 100px;
-}
-.width-150 {
-    width: 150px;
-}
-.height-35 {
-    height: 35px;
-}
-/* object size */
-/* margin & padding */
-.padding-10 {
-    padding: 10px;
-}
-.padding-15 {
-    padding: 15px;
-}
-.padding-20 {
-    padding: 20px;
-}
-.margin-left-20 {
-    margin-left: 20px;
-}
-.margin-right-20 {
-    margin-right: 20px;
-}
-.margin-bottom-20 {
-    margin-bottom: 20px;
-}
-.margin-top-40 {
-    margin-top: 40px;
-}
-.padding-bottom-20 {
-    padding-bottom: 20px;
-}
-.margin-0 {
-    margin-right: 0;
-    margin-left: 0;
-}
-/* margin & padding */
-/* google map */
-#map {
-    position: absolute;
-    top: 65px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -9;
-}
-/* google map */
-/* z-index */
-.z-index-1 {
-    z-index: 1;
-}
-.z-index-2 {
-    z-index: 2;
-}
-/* z-index */
-/* slideandswipe menu */
-.nav {
-    height: 100%;
-    width: 100%;
-    background: rgba(0,0,0,0.6);
-    left: 0;
-    top: 0;
-    z-index: 2;
-    position: fixed;
-    overflow-y: auto;
-    overflow-x: hidden;
-    transform: translate(-100%,0);
-}
-.ssm-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0,0,0,0.2);
-    display: none;
-    z-index: 1;
-}
-.ssm-toggle-nav > i.fa-navicon {
-    color: #ffffff;
-    /* -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: #fff; */
-    font-size: 30px;
-    position: absolute;
-    left: 15px;
-}
-.ssm-toggle-nav > i.fa {
-    color: #ffffff;
-    /* -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: #fff; */
-    font-size: 30px;
-}
-/* slideandswipe menu */
-/* border & radius */
-.border-bottom-white {
-    border-bottom: 2px solid #ffffff;
-}
-.border-bottom-dark {
-    border-bottom: 2px solid #000000;
-}
-/* border & radius */
-/* navigation links */
-.nav-links > li > a {
-    width: 100%;
-    color: #ffffff;
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 100;
-}
-.nav-links > li > a:hover {
-    text-decoration: none;
-}
-.nav-links > li {
-    padding: 20px;
-    list-style: none;
-}
-.nav-footer {
+.img-responsive{
+    display: block;
+    max-width: 80%;
     height: auto;
-    padding: 10px;
 }
-.nav-footer > a {
-    color: #ffffff;
-    padding: 20px;
-    font-size: 25px;
-}
-.nav > h6 {
-    margin-bottom: 10px;
+.text-center{
     text-align: center;
 }
-/* navigation links */
-/* page transitions */
-.page {
+.center{
+    margin: 0 auto;
+}
+.bar-w2p {
+    background-color: #F2385A;
+    border-bottom: 0;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+}
+.bar-tab .tab-item.active,.bar-tab .tab-item:active {
+    color:#36B1BF
+}
+.layered_content{
+    position: absolute;
+    top: 44px;
+    right: 0;
+    bottom: 44px;
+    left: 0;
     height: 100%;
-    position: fixed;
     width: 100%;
-    transform: translate(0,100%);
-    transition:all 0.3s ease;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: -1;
+    background: #E9F1DF;
+    z-index: 1;
 }
-.page-transform {
-    transform: translate(0,0);
-    display: inline-block;
-}
-.page .ssm-toggle-nav > i.fa,
-.page i.fa-angle-down {
-    color: #000000;
-    font-size: 30px;
-}
-div.settings,
-div.discover,
-div.about {
+.none{
     display: none;
 }
-.display-block {
-    display: block !important;
-}
-/* page transitions */
+#loader{background: #E9F1DF url("../img/loader.gif") center center no-repeat;}
+

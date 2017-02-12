@@ -1,153 +1,84 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="assets/css/w2p.css" />
-        <title>W2P</title>
-    </head>
-    <body>
-        <div id="topbar" class="row bg-color-w2p text-center padding-15 shadow-bottom margin-0">
-            <a href="#" class="ssm-toggle-nav pull-left" title="Menu"><i class="fa fa-navicon"></i></a>
-            <img class="height-35" src="assets/img/app/logosmall.png" alt="WANT2PEE" />
-        </div>
-        <div class="row">
-            <div id="map"></div>
-        </div>
-        <div class="row bg-color-white padding-15 margin-0 page">
-            <div class="pages settings">
-                <h3 class="margin-bottom-20">Settings gonna be here
-                    <a href="#" class="pull-right page-close" title="Menu"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                </h3>
-                <p>
-                    Donec feugiat in quam ac rhoncus. Ut efficitur hendrerit lorem et facilisis. Pellentesque hendrerit nisi
-                    id arcu convallis, eu imperdiet ante consectetur. Donec molestie nibh neque, et sodales risus ornare
-                    sagittis. Vivamus rutrum tortor quis eros tempus ullamcorper. Quisque risus arcu, sollicitudin et neque
-                    aliquam, lobortis suscipit nisi. Vivamus tempus congue volutpat.
+<head>
+    <meta charset="utf-8">
+    <title>WANT2PEE</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; img-src * data: 'unsafe-inline'">
+    <link href="assets/plugins/ratchet/css/ratchet.min.css" rel="stylesheet">
+    <link href="assets/plugins/ratchet/css/ratchet-theme-ios.min.css" rel="stylesheet">
+    <link href="assets/css/w2p.css" rel="stylesheet">
+</head>
+<body>
+<header class="bar bar-nav bar-w2p">
+    <h1 class="title">
+        <img src="assets/img/W2P.png" alt="WANT2PEE" height="44">
+    </h1>
+</header>
+<!-- PRELOADER //-->
+<div class="layered_content" id="loader"></div>
 
-                    Nulla pretium ipsum vitae tellus vulputate elementum. Nam vestibulum, tortor sed tincidunt ullamcorper,
-                    arcu diam placerat tortor, sit amet dictum magna risus nec nisl. Nam lacinia velit non neque interdum
-                    placerat. Suspendisse potenti. Mauris dignissim erat et diam faucibus, eget faucibus velit semper. Cras
-                    sit amet elit ac metus tincidunt venenatis. Nunc tristique turpis ligula, in fermentum massa imperdiet
-                    vel.
-                </p>
-                <p>
-                    Donec feugiat in quam ac rhoncus. Ut efficitur hendrerit lorem et facilisis. Pellentesque hendrerit nisi
-                    id arcu convallis, eu imperdiet ante consectetur. Donec molestie nibh neque, et sodales risus ornare
-                    sagittis. Vivamus rutrum tortor quis eros tempus ullamcorper. Quisque risus arcu, sollicitudin et neque
-                    aliquam, lobortis suscipit nisi. Vivamus tempus congue volutpat.
+<!-- MODAL BOX //-->
+<div class="layered_content text-center none" id="settings">
+    <img src="assets/img/modal/general.png" class="img-responsive center" alt="Modal Icon">
+    <h1>modal</h1>
+</div>
 
-                    Nulla pretium ipsum vitae tellus vulputate elementum. Nam vestibulum, tortor sed tincidunt ullamcorper,
-                    arcu diam placerat tortor, sit amet dictum magna risus nec nisl. Nam lacinia velit non neque interdum
-                    placerat. Suspendisse potenti. Mauris dignissim erat et diam faucibus, eget faucibus velit semper. Cras
-                    sit amet elit ac metus tincidunt venenatis. Nunc tristique turpis ligula, in fermentum massa imperdiet
-                    vel.
-                </p>
-                <p>
-                    Donec feugiat in quam ac rhoncus. Ut efficitur hendrerit lorem et facilisis. Pellentesque hendrerit nisi
-                    id arcu convallis, eu imperdiet ante consectetur. Donec molestie nibh neque, et sodales risus ornare
-                    sagittis. Vivamus rutrum tortor quis eros tempus ullamcorper. Quisque risus arcu, sollicitudin et neque
-                    aliquam, lobortis suscipit nisi. Vivamus tempus congue volutpat.
-
-                    Nulla pretium ipsum vitae tellus vulputate elementum. Nam vestibulum, tortor sed tincidunt ullamcorper,
-                    arcu diam placerat tortor, sit amet dictum magna risus nec nisl. Nam lacinia velit non neque interdum
-                    placerat. Suspendisse potenti. Mauris dignissim erat et diam faucibus, eget faucibus velit semper. Cras
-                    sit amet elit ac metus tincidunt venenatis. Nunc tristique turpis ligula, in fermentum massa imperdiet
-                    vel.
-                </p>
-                <p>
-                    Donec feugiat in quam ac rhoncus. Ut efficitur hendrerit lorem et facilisis. Pellentesque hendrerit nisi
-                    id arcu convallis, eu imperdiet ante consectetur. Donec molestie nibh neque, et sodales risus ornare
-                    sagittis. Vivamus rutrum tortor quis eros tempus ullamcorper. Quisque risus arcu, sollicitudin et neque
-                    aliquam, lobortis suscipit nisi. Vivamus tempus congue volutpat.
-
-                    Nulla pretium ipsum vitae tellus vulputate elementum. Nam vestibulum, tortor sed tincidunt ullamcorper,
-                    arcu diam placerat tortor, sit amet dictum magna risus nec nisl. Nam lacinia velit non neque interdum
-                    placerat. Suspendisse potenti. Mauris dignissim erat et diam faucibus, eget faucibus velit semper. Cras
-                    sit amet elit ac metus tincidunt venenatis. Nunc tristique turpis ligula, in fermentum massa imperdiet
-                    vel.
-                </p>
-                <p>
-                    Donec feugiat in quam ac rhoncus. Ut efficitur hendrerit lorem et facilisis. Pellentesque hendrerit nisi
-                    id arcu convallis, eu imperdiet ante consectetur. Donec molestie nibh neque, et sodales risus ornare
-                    sagittis. Vivamus rutrum tortor quis eros tempus ullamcorper. Quisque risus arcu, sollicitudin et neque
-                    aliquam, lobortis suscipit nisi. Vivamus tempus congue volutpat.
-
-                    Nulla pretium ipsum vitae tellus vulputate elementum. Nam vestibulum, tortor sed tincidunt ullamcorper,
-                    arcu diam placerat tortor, sit amet dictum magna risus nec nisl. Nam lacinia velit non neque interdum
-                    placerat. Suspendisse potenti. Mauris dignissim erat et diam faucibus, eget faucibus velit semper. Cras
-                    sit amet elit ac metus tincidunt venenatis. Nunc tristique turpis ligula, in fermentum massa imperdiet
-                    vel.
-                </p>
-                <p>
-                    Donec feugiat in quam ac rhoncus. Ut efficitur hendrerit lorem et facilisis. Pellentesque hendrerit nisi
-                    id arcu convallis, eu imperdiet ante consectetur. Donec molestie nibh neque, et sodales risus ornare
-                    sagittis. Vivamus rutrum tortor quis eros tempus ullamcorper. Quisque risus arcu, sollicitudin et neque
-                    aliquam, lobortis suscipit nisi. Vivamus tempus congue volutpat.
-
-                    Nulla pretium ipsum vitae tellus vulputate elementum. Nam vestibulum, tortor sed tincidunt ullamcorper,
-                    arcu diam placerat tortor, sit amet dictum magna risus nec nisl. Nam lacinia velit non neque interdum
-                    placerat. Suspendisse potenti. Mauris dignissim erat et diam faucibus, eget faucibus velit semper. Cras
-                    sit amet elit ac metus tincidunt venenatis. Nunc tristique turpis ligula, in fermentum massa imperdiet
-                    vel.
-                </p>
+<div class="layered_content none" id="confirm"></div>
+<div class="layered_content none" id="history"></div>
+<div class="layered_content none" id="favorites"></div>
+<div class="layered_content none" id="add"></div>
+<div class="layered_content none" id="">
+    <ul class="table-view">
+        <li class="table-view-cell">
+            Item 1
+            <div class="toggle">
+                <div class="toggle-handle"></div>
             </div>
-            <div class="pages discover">
-                <h3 class="margin-bottom-20">Discover
-                    <a href="#" class="pull-right page-close" title="Menu"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                </h3>
-                <p>
-                    Donec feugiat in quam ac rhoncus. Ut efficitur hendrerit lorem et facilisis. Pellentesque hendrerit nisi
-                    id arcu convallis, eu imperdiet ante consectetur. Donec molestie nibh neque, et sodales risus ornare
-                    sagittis. Vivamus rutrum tortor quis eros tempus ullamcorper. Quisque risus arcu, sollicitudin et neque
-                    aliquam, lobortis suscipit nisi. Vivamus tempus congue volutpat.
-                </p>
+        </li>
+        <li class="table-view-cell">
+            Item 2
+            <div class="toggle active">
+                <div class="toggle-handle"></div>
             </div>
-            <div class="pages about">
-                <h3 class="margin-bottom-20">About
-                    <a href="#" class="pull-right page-close" title="Menu"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                </h3>
-                <p>
-                    Nulla pretium ipsum vitae tellus vulputate elementum. Nam vestibulum, tortor sed tincidunt ullamcorper,
-                    arcu diam placerat tortor, sit amet dictum magna risus nec nisl. Nam lacinia velit non neque interdum
-                    placerat. Suspendisse potenti. Mauris dignissim erat et diam faucibus, eget faucibus velit semper. Cras
-                    sit amet elit ac metus tincidunt venenatis. Nunc tristique turpis ligula, in fermentum massa imperdiet
-                    vel.
-                </p>
+        </li>
+        <li class="table-view-cell">
+            Item 3
+            <div class="toggle">
+                <div class="toggle-handle"></div>
             </div>
-        </div>
-        <nav class="nav">
-            <div class="row padding-20">
-                <a href="#" class="ssm-toggle-nav pull-right margin-right-20" title="Menu"><i class="fa fa-mail-reply-all"></i></a>
-                <div class="text-center margin-top-40 margin-bottom-20">
-                    <img class="width-150" src="assets/img/app/logo.png" alt="WANT2PEE" />
-                </div>
-                <ul class="col-md-12 nav-links text-center margin-top-40">
-                    <li><a class="ssm-toggle-nav page-open" data-menu-link="true" data-target="settings" href="#">Settings</a></li>
-                    <li><a class="ssm-toggle-nav page-open" data-menu-link="true" data-target="discover" href="#">Discover</a></li>
-                    <li><a class="ssm-toggle-nav page-open" data-menu-link="true" data-target="about" href="#">About</a></li>
-                </ul>
-            </div>
-            <div class="row nav-footer text-center">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-            <h6 class="font-color-white text-center margin-top-40">© WANT2PEE 2016 ALL RIGHTS RESERVED</h6>
-        </nav>
-        <input id="distance-range" type="hidden" min="1" max="15" value="2" step="1">
-        <div class="ssm-overlay ssm-toggle-nav"></div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="https://maps.googleapis.com/maps/api/js" type="text/javascript"></script>
-        <script src="assets/plugins/jquery.touchSwipe.min.js"></script>
-        <script src="assets/plugins/jquery.slideandswipe.js"></script>
-        <script src="assets/js/w2p.js"></script>
-    </body>
+        </li>
+    </ul>
+</div>
+<div class="content">
+    <div id="map"></div>
+</div>
+<nav class="bar bar-tab">
+    <a class="tab-item active">
+        <span class="icon icon-search"></span>
+        <span class="tab-label">W2P</span>
+    </a>
+    <a class="tab-item" data-target="history">
+        <span class="icon icon-refresh"></span>
+        <span class="tab-label">History</span>
+    </a>
+    <a class="tab-item" data-target="favorites">
+        <span class="icon icon-star-filled"></span>
+        <span class="tab-label">Favorites</span>
+    </a>
+    <a class="tab-item" data-target="add">
+        <span class="icon icon-plus"></span>
+        <span class="tab-label">Add</span>
+    </a>
+    <a class="tab-item" data-target="settings">
+        <span class="icon icon-gear"></span>
+        <span class="tab-label">Settings</span>
+    </a>
+</nav>
+<input id="distance-range" type="hidden" min="1" max="13" value="2" step="1">
+<script type="text/javascript" src="cordova.js"></script>
+<script src="assets/plugins/jquery-3.1.1.min.js"></script>
+<script src="assets/plugins/ratchet/js/ratchet.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
 </html>
