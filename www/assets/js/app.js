@@ -172,7 +172,7 @@ function confirmation(lat,lon,target,alternative,size)
 
     if(size > 1)
     {
-        $("#confirm .selection-list .close div").text('This is only one location we can offer now.');
+        $("#confirm .selection-list .close div").text('You have ' + size + ' more alternatives.');
     } else {
         $("#confirm .selection-list .close div").text('This is only one location we can offer now.');
     }

@@ -16,7 +16,33 @@ body{
 .center {
     margin: 0 auto;
 }
+#on_route
+{
+    position: absolute;
+    width: 100%;
+    padding: 15px;
+    right:0;
+    left:0;
+    bottom:50px;
+    height: 74px;
+    line-height:44px;
+    z-index: 999;
+    background: #fff;
+}
 
+.directions
+{
+    width: 45%;
+    height: 44px;
+    color:#fff;
+    border: 0;
+}
+#direct_show{
+    background: blue;
+}
+#direct_cancel{
+    background: red;
+}
 .bar-w2p {
     background-color: #515B5E;
     border-bottom: 0;
