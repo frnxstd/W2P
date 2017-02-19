@@ -3,16 +3,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 var map;
 var iconme;
 var my_marker;
-var directionsService = new google.maps.DirectionsService;
-var directionsDisplay = new google.maps.DirectionsRenderer({
-    suppressMarkers: true,
-    suppressInfoWindows: false,
-    polylineOptions: {
-        strokeColor: "#000000",
-        strokeOpacity: 0.4,
-        strokeWeight: 2
-    }
-});
+var directionsService;
+
 
 function loading(toggle) {
     if(toggle == 'on')
@@ -34,7 +26,15 @@ function relocate(lat,lon)
 
 function initialize(lat,lon,range)
 {
-
+      directionsDisplay = new google.maps.DirectionsRenderer({
+        suppressMarkers: true,
+        suppressInfoWindows: false,
+        polylineOptions: {
+            strokeColor: "#000000",
+            strokeOpacity: 0.4,
+            strokeWeight: 2
+        }
+    });
     /**
 
     TODO: SET ME FREE PLEASE
@@ -171,10 +171,10 @@ function initialize(lat,lon,range)
 
 function direct_me(lat,lon,_lat,_lon)
 {
-    alert('here we go');
-    map.setZoom(15);
+    map.setZoom(13);
     directionsDisplay.setMap(map);
     directionsDisplay.setDirections({routes: []});
+    alert(directionsService);
     calculate_directions(directionsService, directionsDisplay,lat,lon,_lat,_lon);
 }
 
@@ -184,14 +184,19 @@ function calculate_directions(directionsService, directionsDisplay,lat,lon,_lat,
         navigator.geolocation.getCurrentPosition(onRelocate, onError);
         return false;
     }, 2000);
+
     directionsService.route({
         origin: lat+","+lon,
         destination: _lat+","+_lon,
-        travelMode: google.maps.TravelMode.WALKING
+        travelMode: google.maps.TravelMode.DRIVING
     }, function(response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
+            alert('redirecting!');
+
             directionsDisplay.setDirections(response);
         } else {
+
+            alert('oh shit');
             onError('no_direction');
             //myApp.popup('.popup-alert');
         }
@@ -221,6 +226,7 @@ function LoadMapsApi()
 
 function MapCallback()
 {
+    directionsService = new google.maps.DirectionsService
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
     $("#centerizemap").click(function(){
         navigator.geolocation.getCurrentPosition(onSuccess, onError)

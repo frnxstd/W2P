@@ -32,5 +32,5 @@
 .none{
     display: none;
 }
-#loader{background: #E9F1DF url("../img/loader.gif") center center no-repeat;}
+#loader{top:0;background: #E9F1DF url("../img/loader.gif") center center no-repeat;}
 
