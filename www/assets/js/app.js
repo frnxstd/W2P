@@ -32,17 +32,9 @@ function initialize(lat,lon,range)
         polylineOptions: {
             strokeColor: "#000000",
             strokeOpacity: 0.4,
-            strokeWeight: 2
+            strokeWeight: 3
         }
     });
-    /**
-
-    TODO: SET ME FREE PLEASE
-
-     */
-
-    lat = 40.985385;
-    lon = 29.0256023;
 
     $("#map").css("height",$( document ).height() - ($(".bar-nav").height() + $(".bar-tab").height()));
     var locations;
@@ -130,7 +122,7 @@ function initialize(lat,lon,range)
                     var distance = parseFloat(locations[i]['distance']);
                     distance = distance.toFixed(2);
 
-                    direct_me(lat,lon,locations[i]['lat'],locations[i]['lon']);
+                    confirmation(lat,lon,locations[i]);
                 }
             })(marker, i));
         }
@@ -169,12 +161,23 @@ function initialize(lat,lon,range)
 
 }
 
+function confirmation(lat,lon,target)
+{
+    $("#confirm_label").text(target['name']);
+    $("#confirm_type").text(target['type']);
+    $("#confirm_distance").text(target['distance']);
+    $("#confirm").show();
+
+    if(0)
+    {
+        direct_me(lat,lon,target['lat'],target['lon']);
+    }
+}
+
 function direct_me(lat,lon,_lat,_lon)
 {
-    map.setZoom(13);
     directionsDisplay.setMap(map);
     directionsDisplay.setDirections({routes: []});
-    alert(directionsService);
     calculate_directions(directionsService, directionsDisplay,lat,lon,_lat,_lon);
 }
 
@@ -185,18 +188,26 @@ function calculate_directions(directionsService, directionsDisplay,lat,lon,_lat,
         return false;
     }, 2000);
 
+    /**
+
+     DRIVING (Default) indicates standard driving directions using the road network.
+     BICYCLING requests bicycling directions via bicycle paths & preferred streets.
+     TRANSIT requests directions via public transit routes.
+     WALKING requests walking directions via pedestrian paths & sidewalks.
+
+     */
+
     directionsService.route({
         origin: lat+","+lon,
         destination: _lat+","+_lon,
-        travelMode: google.maps.TravelMode.DRIVING
+        travelMode: google.maps.TravelMode.WALKING,
+        transitOptions: {
+            routingPreference: 'LESS_WALKING'
+        }
     }, function(response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
-            alert('redirecting!');
-
             directionsDisplay.setDirections(response);
         } else {
-
-            alert('oh shit');
             onError('no_direction');
             //myApp.popup('.popup-alert');
         }
@@ -221,7 +232,7 @@ function BuildTabMenu() {
 
 function LoadMapsApi()
 {
-    $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAyrPMBJd5T3nOeMnllIrhbgEH-QLJu2Ks&sensor=true&callback=MapCallback');
+    $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAyrPMBJd5T3nOeMnllIrhbgEH-QLJu2Ks&sensor=true&libraries=geometry&callback=MapCallback');
 }
 
 function MapCallback()

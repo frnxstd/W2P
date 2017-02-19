@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; img-src * data: 'unsafe-inline'">
     <link href="assets/plugins/ratchet/css/ratchet.min.css" rel="stylesheet">
     <link href="assets/plugins/ratchet/css/ratchet-theme-ios.min.css" rel="stylesheet">
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/w2p.css" rel="stylesheet">
 </head>
 <body>
@@ -14,6 +15,9 @@
     <h1 class="title">
         <img src="assets/img/W2P.png" alt="WANT2PEE" height="44">
     </h1>
+    <button class="btn pull-right">
+        <i class="fa fa-beer"></i>
+    </button>
 </header>
 <!-- PRELOADER //-->
 <div class="layered_content" id="loader"></div>
@@ -24,10 +28,46 @@
     <h1>modal</h1>
 </div>
 
-<div class="layered_content none" id="confirm"></div>
+<div class="layered_content none" id="confirm">
+    <div class="text-center">Would you like to go to<br /><span class="bold" id="confirm_label">XYZ</span>?</div>
+    <div id="confirm_type" class="text-center font-10"></div>
+    <hr>
+    <ul class="table-view">
+        <li class="table-view-cell">
+            Walk
+        </li>
+        <li class="table-view-cell">
+            Cycle
+        </li>
+        <li class="table-view-cell">
+            Transit
+        </li>
+        <li class="table-view-cell">
+            Drive
+        </li>
+    </ul>
+</div>
 <div class="layered_content none" id="history"></div>
 <div class="layered_content none" id="favorites"></div>
-<div class="layered_content none" id="add"></div>
+<div class="layered_content none" id="add">
+    <form class="input-group">
+        <div class="input-row">
+            <label>Full name</label>
+            <input type="text" placeholder="Mister Ratchet">
+        </div>
+        <div class="input-row">
+            <label>Email</label>
+            <input type="email" placeholder="ratchetframework@gmail.com">
+        </div>
+        <div class="input-row">
+            <label>Username</label>
+            <input type="text" placeholder="goRatchet">
+        </div>
+        <div class="input-row">
+            <textarea placeholder="goRatchet"></textarea>
+        </div>
+    </form>
+</div>
 <div class="layered_content none" id="settings">
     <ul class="table-view">
         <li class="table-view-cell">
@@ -55,23 +95,23 @@
 </div>
 <nav class="bar bar-tab">
     <a class="tab-item active">
-        <span class="icon icon-search"></span>
+        <span class="icon fa fa-search"></span>
         <span class="tab-label">W2P</span>
     </a>
     <a class="tab-item" data-target="history">
-        <span class="icon icon-refresh"></span>
+        <span class="icon fa fa-history"></span>
         <span class="tab-label">History</span>
     </a>
     <a class="tab-item" data-target="favorites">
-        <span class="icon icon-star-filled"></span>
+        <span class="icon fa fa-star"></span>
         <span class="tab-label">Favorites</span>
     </a>
     <a class="tab-item" data-target="add">
-        <span class="icon icon-plus"></span>
+        <span class="icon fa fa-plus-circle"></span>
         <span class="tab-label">Add</span>
     </a>
     <a class="tab-item" data-target="settings">
-        <span class="icon icon-gear"></span>
+        <span class="icon fa fa-cog"></span>
         <span class="tab-label">Settings</span>
     </a>
 </nav>

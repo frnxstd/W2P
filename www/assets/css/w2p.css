@@ -1,24 +1,29 @@
-.img-responsive{
+.img-responsive {
     display: block;
     max-width: 80%;
     height: auto;
 }
-.text-center{
+
+.text-center {
     text-align: center;
 }
-.center{
+
+.center {
     margin: 0 auto;
 }
+
 .bar-w2p {
-    background-color: #F2385A;
+    background-color: #515B5E;
     border-bottom: 0;
     -webkit-box-shadow: 0;
     box-shadow: 0;
 }
-.bar-tab .tab-item.active,.bar-tab .tab-item:active {
-    color:#36B1BF
+
+.bar-tab .tab-item.active, .bar-tab .tab-item:active {
+    color: #2E3233
 }
-.layered_content{
+
+.layered_content {
     position: absolute;
     top: 44px;
     right: 0;
@@ -26,11 +31,53 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: #E9F1DF;
+    background: #FFFEFC;
     z-index: 1;
 }
-.none{
+
+.none {
     display: none;
 }
-#loader{top:0;background: #E9F1DF url("../img/loader.gif") center center no-repeat;}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.font-10 {
+    font-size: 10px;
+}
+
+.font-12 {
+    font-size: 12px;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.font-16 {
+    font-size: 16px;
+}
+
+.font-18 {
+    font-size: 18px;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.font-22 {
+    font-size: 22px;
+}
+
+#loader {
+    top: 0;
+    background: #E2E3DF url("../img/loading.svg") center center no-repeat;
+    background-size: 75px 75px;
+}
 
