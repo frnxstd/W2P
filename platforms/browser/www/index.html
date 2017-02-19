@@ -6,7 +6,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; img-src * data: 'unsafe-inline'">
     <link href="assets/plugins/ratchet/css/ratchet.min.css" rel="stylesheet">
-    <link href="assets/plugins/ratchet/css/ratchet-theme-ios.min.css" rel="stylesheet">
+    <link href="assets/css/ratchet-theme-ios.css" rel="stylesheet">
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link href="assets/css/w2p.css" rel="stylesheet">
 </head>
 <body>
@@ -24,10 +26,62 @@
     <h1>modal</h1>
 </div>
 
-<div class="layered_content none" id="confirm"></div>
+<div class="layered_content none" id="confirm">
+    <div class="text-center">Would you like to go to<br /><span class="bold" id="confirm_label"></span>?</div>
+    <div class="text-center font-12">
+        <span id="confirm_type"></span>
+        -
+        <span id="confirm_distance"></span>
+    </div>
+    <ul class="table-view selection-list">
+        <li class="table-view-cell option" data-option="WALKING">
+            Walking
+            <div class="font-10 italic">requests walking directions via pedestrian paths & sidewalks.</div>
+        </li>
+        <li class="table-view-cell option" data-option="BICYCLING">
+            Bicycling
+            <div class="font-10 italic">requests bicycling directions via bicycle paths & preferred streets.</div>
+        </li>
+        <li class="table-view-cell option" data-option="TRANSIT">
+            Transit
+            <div class="font-10 italic">requests directions via public transit routes.</div>
+        </li>
+        <li class="table-view-cell option" data-option="DRIVING">
+            Driving
+            <div class="font-10 italic">indicates standard driving directions using the road network.</div>
+        </li>
+        <li class="table-view-cell" id="closest">
+            Direct me to the closest location
+            <div class="font-10 italic" id="closest_area">indicates standard driving directions using the road network.</div>
+        </li>
+        <li class="table-view-cell close">
+            Cancel
+            <br>
+            <div class="font-10 italic"></div>
+        </li>
+    </ul>
+</div>
 <div class="layered_content none" id="history"></div>
 <div class="layered_content none" id="favorites"></div>
-<div class="layered_content none" id="add"></div>
+<div class="layered_content none" id="add">
+    <form class="input-group">
+        <div class="input-row">
+            <label>Full name</label>
+            <input type="text" placeholder="Mister Ratchet">
+        </div>
+        <div class="input-row">
+            <label>Email</label>
+            <input type="email" placeholder="ratchetframework@gmail.com">
+        </div>
+        <div class="input-row">
+            <label>Username</label>
+            <input type="text" placeholder="goRatchet">
+        </div>
+        <div class="input-row">
+            <textarea placeholder="goRatchet"></textarea>
+        </div>
+    </form>
+</div>
 <div class="layered_content none" id="settings">
     <ul class="table-view">
         <li class="table-view-cell">
@@ -40,7 +94,7 @@
             Item 2
             <div class="toggle active">
                 <div class="toggle-handle"></div>
-            </div>
+            </div><i class="fa fa-bicycle"></i>
         </li>
         <li class="table-view-cell">
             Item 3
@@ -55,23 +109,23 @@
 </div>
 <nav class="bar bar-tab">
     <a class="tab-item active">
-        <span class="icon icon-search"></span>
+        <span class="icon fa fa-search"></span>
         <span class="tab-label">W2P</span>
     </a>
     <a class="tab-item" data-target="history">
-        <span class="icon icon-refresh"></span>
+        <span class="icon fa fa-history"></span>
         <span class="tab-label">History</span>
     </a>
     <a class="tab-item" data-target="favorites">
-        <span class="icon icon-star-filled"></span>
+        <span class="icon fa fa-star"></span>
         <span class="tab-label">Favorites</span>
     </a>
     <a class="tab-item" data-target="add">
-        <span class="icon icon-plus"></span>
+        <span class="icon fa fa-plus-circle"></span>
         <span class="tab-label">Add</span>
     </a>
     <a class="tab-item" data-target="settings">
-        <span class="icon icon-gear"></span>
+        <span class="icon fa fa-cog"></span>
         <span class="tab-label">Settings</span>
     </a>
 </nav>

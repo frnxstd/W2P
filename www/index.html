@@ -6,8 +6,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; img-src * data: 'unsafe-inline'">
     <link href="assets/plugins/ratchet/css/ratchet.min.css" rel="stylesheet">
-    <link href="assets/plugins/ratchet/css/ratchet-theme-ios.min.css" rel="stylesheet">
+    <link href="assets/css/ratchet-theme-ios.css" rel="stylesheet">
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link href="assets/css/w2p.css" rel="stylesheet">
 </head>
 <body>
@@ -15,9 +16,6 @@
     <h1 class="title">
         <img src="assets/img/W2P.png" alt="WANT2PEE" height="44">
     </h1>
-    <button class="btn pull-right">
-        <i class="fa fa-beer"></i>
-    </button>
 </header>
 <!-- PRELOADER //-->
 <div class="layered_content" id="loader"></div>
@@ -29,21 +27,37 @@
 </div>
 
 <div class="layered_content none" id="confirm">
-    <div class="text-center">Would you like to go to<br /><span class="bold" id="confirm_label">XYZ</span>?</div>
-    <div id="confirm_type" class="text-center font-10"></div>
-    <hr>
-    <ul class="table-view">
-        <li class="table-view-cell">
-            Walk
+    <div class="text-center">Would you like to go to<br /><span class="bold" id="confirm_label"></span>?</div>
+    <div class="text-center font-12">
+        <span id="confirm_type"></span>
+        -
+        <span id="confirm_distance"></span>
+    </div>
+    <ul class="table-view selection-list">
+        <li class="table-view-cell option" data-option="WALKING">
+            Walking
+            <div class="font-10 italic">requests walking directions via pedestrian paths & sidewalks.</div>
         </li>
-        <li class="table-view-cell">
-            Cycle
+        <li class="table-view-cell option" data-option="BICYCLING">
+            Bicycling
+            <div class="font-10 italic">requests bicycling directions via bicycle paths & preferred streets.</div>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell option" data-option="TRANSIT">
             Transit
+            <div class="font-10 italic">requests directions via public transit routes.</div>
         </li>
-        <li class="table-view-cell">
-            Drive
+        <li class="table-view-cell option" data-option="DRIVING">
+            Driving
+            <div class="font-10 italic">indicates standard driving directions using the road network.</div>
+        </li>
+        <li class="table-view-cell" id="closest">
+            Direct me to the closest location
+            <div class="font-10 italic" id="closest_area">indicates standard driving directions using the road network.</div>
+        </li>
+        <li class="table-view-cell close">
+            Cancel
+            <br>
+            <div class="font-10 italic"></div>
         </li>
     </ul>
 </div>
@@ -80,7 +94,7 @@
             Item 2
             <div class="toggle active">
                 <div class="toggle-handle"></div>
-            </div>
+            </div><i class="fa fa-bicycle"></i>
         </li>
         <li class="table-view-cell">
             Item 3

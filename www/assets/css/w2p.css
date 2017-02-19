@@ -1,3 +1,8 @@
+body{
+    font-family: "Varela Round", Helvetica, sans-serif;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+}
 .img-responsive {
     display: block;
     max-width: 80%;
@@ -33,6 +38,8 @@
     width: 100%;
     background: #FFFEFC;
     z-index: 1;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .none {
@@ -80,4 +87,6 @@
     background: #E2E3DF url("../img/loading.svg") center center no-repeat;
     background-size: 75px 75px;
 }
-
+.table-view-cell{
+    padding-right: 15px;
+}

@@ -1,6 +1,7 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 var map;
+var APIKEY = 'AIzaSyAyrPMBJd5T3nOeMnllIrhbgEH-QLJu2Ks';
 var iconme;
 var my_marker;
 var directionsService;
@@ -26,30 +27,22 @@ function relocate(lat,lon)
 
 function initialize(lat,lon,range)
 {
-      directionsDisplay = new google.maps.DirectionsRenderer({
+    directionsDisplay = new google.maps.DirectionsRenderer({
         suppressMarkers: true,
         suppressInfoWindows: false,
         polylineOptions: {
             strokeColor: "#000000",
             strokeOpacity: 0.4,
-            strokeWeight: 2
+            strokeWeight: 3
         }
     });
-    /**
-
-    TODO: SET ME FREE PLEASE
-
-     */
-
-    lat = 40.985385;
-    lon = 29.0256023;
 
     $("#map").css("height",$( document ).height() - ($(".bar-nav").height() + $(".bar-tab").height()));
     var locations;
     var icon;
     $.ajax({
         url: 'http://want2pee.com/application/3c973446de9546a15208c8b14e7ea4609cefd123.php?key=73d7d9c2a74f52a1aca8b4af0e03c872158b3fb0&lat='+lat+'&lon='+lon+'&range='+range,
-        dataType:'jsonp'
+        dataType:'json'
     }).done(function( data ) {
 
         locations  = data['results'];
@@ -130,7 +123,7 @@ function initialize(lat,lon,range)
                     var distance = parseFloat(locations[i]['distance']);
                     distance = distance.toFixed(2);
 
-                    direct_me(lat,lon,locations[i]['lat'],locations[i]['lon']);
+                    confirmation(lat,lon,locations[i],locations[0],data['size']);
                 }
             })(marker, i));
         }
@@ -169,34 +162,81 @@ function initialize(lat,lon,range)
 
 }
 
-function direct_me(lat,lon,_lat,_lon)
+function confirmation(lat,lon,target,alternative,size)
 {
-    map.setZoom(13);
-    directionsDisplay.setMap(map);
-    directionsDisplay.setDirections({routes: []});
-    alert(directionsService);
-    calculate_directions(directionsService, directionsDisplay,lat,lon,_lat,_lon);
+    $("#confirm_label").text(target['name']);
+    $("#confirm_type").text(target['type']);
+    $("#confirm_distance").text((Math.round(target['distance'] * 100) / 100) + ' KM');
+
+    //alert('https://maps.googleapis.com/maps/api/directions/json?origin='+lat+','+lon+'&destination='+target['lat']+','+target['lon']+'&key='+APIKEY);
+
+    if(size > 1)
+    {
+        $("#confirm .selection-list .close div").text('This is only one location we can offer now.');
+    } else {
+        $("#confirm .selection-list .close div").text('This is only one location we can offer now.');
+    }
+
+    if(size > 1 && target['id'] != alternative['id'])
+    {
+        $("#closest").show();
+        $("#closest_area").text(alternative['name'] + ' - ' + (Math.round(alternative['distance'] * 100) / 100) + ' KM');
+    }
+    else
+    {
+        $("#closest").hide();
+    }
+
+    $("#confirm .selection-list .close").click(function () {
+        $("#confirm").hide();
+    });
+
+    $("#confirm").show();
+
+    $("#confirm .selection-list .option").click(function () {
+        direct_me(lat,lon,target['lat'],target['lon'],$(this).data('option'));
+        $("#confirm").fadeOut(1500);
+    });
 }
 
-function calculate_directions(directionsService, directionsDisplay,lat,lon,_lat,_lon)
+function direct_me(lat,lon,_lat,_lon,option)
+{
+    directionsDisplay.setMap(map);
+    directionsDisplay.setDirections({routes: []});
+    calculate_directions(directionsService, directionsDisplay,lat,lon,_lat,_lon,option);
+}
+
+function calculate_directions(directionsService, directionsDisplay,lat,lon,_lat,_lon,option)
 {
     setInterval(function(){
         navigator.geolocation.getCurrentPosition(onRelocate, onError);
         return false;
     }, 2000);
 
+    var options;
+
+    if(option == 'WALKING')
+    {
+        options = {
+            routingPreference: 'LESS_WALKING'
+        };
+    }
+    else if(option == 'TRANSIT')
+    {
+        options = {
+            routingPreference: 'FEWER_TRANSFERS'
+        };
+    }
+
     directionsService.route({
         origin: lat+","+lon,
         destination: _lat+","+_lon,
-        travelMode: google.maps.TravelMode.DRIVING
+        travelMode: option,
+        transitOptions: options
     }, function(response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
-            alert('redirecting!');
-
             directionsDisplay.setDirections(response);
         } else {
-
-            alert('oh shit');
             onError('no_direction');
             //myApp.popup('.popup-alert');
         }
@@ -221,7 +261,7 @@ function BuildTabMenu() {
 
 function LoadMapsApi()
 {
-    $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAyrPMBJd5T3nOeMnllIrhbgEH-QLJu2Ks&sensor=true&callback=MapCallback');
+    $.getScript('https://maps.googleapis.com/maps/api/js?key='+APIKEY+'&sensor=true&libraries=geometry&callback=MapCallback');
 }
 
 function MapCallback()
